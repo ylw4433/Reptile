@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.reptile.code.dao.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.reptile.code.entity.UserInfo">
+    <id column="userid" jdbcType="VARCHAR" property="userid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="identitycard" jdbcType="VARCHAR" property="identitycard" />
+    <result column="state" jdbcType="CHAR" property="state" />
+    <result column="creatdata" jdbcType="TIMESTAMP" property="creatdata" />
+    <result column="updata" jdbcType="TIMESTAMP" property="updata" />
+    <result column="reverse1" jdbcType="VARCHAR" property="reverse1" />
+    <result column="reverse2" jdbcType="VARCHAR" property="reverse2" />
+    <result column="reverse3" jdbcType="VARCHAR" property="reverse3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    userid, username, password, sex, birthday, phone, email, identitycard, state, creatdata, 
+    updata, reverse1, reverse2, reverse3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where userid = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where userid = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.reptile.code.entity.UserInfo">
+    insert into user (userid, username, password, 
+      sex, birthday, phone, email, 
+      identitycard, state, creatdata, 
+      updata, reverse1, reverse2, 
+      reverse3)
+    values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=CHAR}, #{birthday,jdbcType=DATE}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{identitycard,jdbcType=VARCHAR}, #{state,jdbcType=CHAR}, #{creatdata,jdbcType=TIMESTAMP}, 
+      #{updata,jdbcType=TIMESTAMP}, #{reverse1,jdbcType=VARCHAR}, #{reverse2,jdbcType=VARCHAR}, 
+      #{reverse3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.reptile.code.entity.UserInfo">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="identitycard != null">
+        identitycard,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="creatdata != null">
+        creatdata,
+      </if>
+      <if test="updata != null">
+        updata,
+      </if>
+      <if test="reverse1 != null">
+        reverse1,
+      </if>
+      <if test="reverse2 != null">
+        reverse2,
+      </if>
+      <if test="reverse3 != null">
+        reverse3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="identitycard != null">
+        #{identitycard,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="creatdata != null">
+        #{creatdata,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updata != null">
+        #{updata,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reverse1 != null">
+        #{reverse1,jdbcType=VARCHAR},
+      </if>
+      <if test="reverse2 != null">
+        #{reverse2,jdbcType=VARCHAR},
+      </if>
+      <if test="reverse3 != null">
+        #{reverse3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.reptile.code.entity.UserInfo">
+    update user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="identitycard != null">
+        identitycard = #{identitycard,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=CHAR},
+      </if>
+      <if test="creatdata != null">
+        creatdata = #{creatdata,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updata != null">
+        updata = #{updata,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reverse1 != null">
+        reverse1 = #{reverse1,jdbcType=VARCHAR},
+      </if>
+      <if test="reverse2 != null">
+        reverse2 = #{reverse2,jdbcType=VARCHAR},
+      </if>
+      <if test="reverse3 != null">
+        reverse3 = #{reverse3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.reptile.code.entity.UserInfo">
+    update user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      identitycard = #{identitycard,jdbcType=VARCHAR},
+      state = #{state,jdbcType=CHAR},
+      creatdata = #{creatdata,jdbcType=TIMESTAMP},
+      updata = #{updata,jdbcType=TIMESTAMP},
+      reverse1 = #{reverse1,jdbcType=VARCHAR},
+      reverse2 = #{reverse2,jdbcType=VARCHAR},
+      reverse3 = #{reverse3,jdbcType=VARCHAR}
+    where userid = #{userid,jdbcType=VARCHAR}
+  </update>
+</mapper>

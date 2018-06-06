@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.reptile.code.dao.ClassifyInfoMapper">
+  <resultMap id="BaseResultMap" type="com.reptile.code.entity.ClassifyInfo">
+    <id column="classifyID" jdbcType="VARCHAR" property="classifyid" />
+    <result column="userid" jdbcType="VARCHAR" property="userid" />
+    <result column="classifyName" jdbcType="VARCHAR" property="classifyname" />
+    <result column="start" jdbcType="CHAR" property="start" />
+    <result column="startdata" jdbcType="TIMESTAMP" property="startdata" />
+    <result column="updata" jdbcType="TIMESTAMP" property="updata" />
+    <result column="reverse1" jdbcType="VARCHAR" property="reverse1" />
+    <result column="reverse2" jdbcType="VARCHAR" property="reverse2" />
+    <result column="reverse3" jdbcType="VARCHAR" property="reverse3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    classifyID, userid, classifyName, start, startdata, updata, reverse1, reverse2, reverse3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from Classify
+    where classifyID = #{classifyid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from Classify
+    where classifyID = #{classifyid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.reptile.code.entity.ClassifyInfo">
+    insert into Classify (classifyID, userid, classifyName, 
+      start, startdata, updata, 
+      reverse1, reverse2, reverse3
+      )
+    values (#{classifyid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{classifyname,jdbcType=VARCHAR}, 
+      #{start,jdbcType=CHAR}, #{startdata,jdbcType=TIMESTAMP}, #{updata,jdbcType=TIMESTAMP}, 
+      #{reverse1,jdbcType=VARCHAR}, #{reverse2,jdbcType=VARCHAR}, #{reverse3,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.reptile.code.entity.ClassifyInfo">
+    insert into Classify
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="classifyid != null">
+        classifyID,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="classifyname != null">
+        classifyName,
+      </if>
+      <if test="start != null">
+        start,
+      </if>
+      <if test="startdata != null">
+        startdata,
+      </if>
+      <if test="updata != null">
+        updata,
+      </if>
+      <if test="reverse1 != null">
+        reverse1,
+      </if>
+      <if test="reverse2 != null">
+        reverse2,
+      </if>
+      <if test="reverse3 != null">
+        reverse3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="classifyid != null">
+        #{classifyid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyname != null">
+        #{classifyname,jdbcType=VARCHAR},
+      </if>
+      <if test="start != null">
+        #{start,jdbcType=CHAR},
+      </if>
+      <if test="startdata != null">
+        #{startdata,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updata != null">
+        #{updata,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reverse1 != null">
+        #{reverse1,jdbcType=VARCHAR},
+      </if>
+      <if test="reverse2 != null">
+        #{reverse2,jdbcType=VARCHAR},
+      </if>
+      <if test="reverse3 != null">
+        #{reverse3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.reptile.code.entity.ClassifyInfo">
+    update Classify
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="classifyname != null">
+        classifyName = #{classifyname,jdbcType=VARCHAR},
+      </if>
+      <if test="start != null">
+        start = #{start,jdbcType=CHAR},
+      </if>
+      <if test="startdata != null">
+        startdata = #{startdata,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updata != null">
+        updata = #{updata,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reverse1 != null">
+        reverse1 = #{reverse1,jdbcType=VARCHAR},
+      </if>
+      <if test="reverse2 != null">
+        reverse2 = #{reverse2,jdbcType=VARCHAR},
+      </if>
+      <if test="reverse3 != null">
+        reverse3 = #{reverse3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where classifyID = #{classifyid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.reptile.code.entity.ClassifyInfo">
+    update Classify
+    set userid = #{userid,jdbcType=VARCHAR},
+      classifyName = #{classifyname,jdbcType=VARCHAR},
+      start = #{start,jdbcType=CHAR},
+      startdata = #{startdata,jdbcType=TIMESTAMP},
+      updata = #{updata,jdbcType=TIMESTAMP},
+      reverse1 = #{reverse1,jdbcType=VARCHAR},
+      reverse2 = #{reverse2,jdbcType=VARCHAR},
+      reverse3 = #{reverse3,jdbcType=VARCHAR}
+    where classifyID = #{classifyid,jdbcType=VARCHAR}
+  </update>
+</mapper>

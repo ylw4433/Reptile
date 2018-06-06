@@ -1,22 +1,21 @@
-package com.reptile.code.dao.entity;
+package com.reptile.code.entity;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class Data implements Serializable {
-	//id
+public class DataInfo implements Serializable {
     private String issueid;
-    //用户ID
+
     private String userid;
-    //问题分类
+
     private String issueclassify;
-    //问题头
+
     private String issueheadline;
-    //问题描述
+
     private String issuedescribe;
 
     private Date startdata;
-    
+
     private Date updata;
 
     private String state;

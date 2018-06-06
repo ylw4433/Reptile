@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.reptile.code.dao.DataInfoMapper">
+  <resultMap id="BaseResultMap" type="com.reptile.code.entity.DataInfo">
+    <id column="issueid" jdbcType="VARCHAR" property="issueid" />
+    <result column="userid" jdbcType="VARCHAR" property="userid" />
+    <result column="issueclassify" jdbcType="VARCHAR" property="issueclassify" />
+    <result column="issueheadline" jdbcType="VARCHAR" property="issueheadline" />
+    <result column="issuedescribe" jdbcType="VARCHAR" property="issuedescribe" />
+    <result column="startdata" jdbcType="TIMESTAMP" property="startdata" />
+    <result column="updata" jdbcType="TIMESTAMP" property="updata" />
+    <result column="state" jdbcType="CHAR" property="state" />
+    <result column="issuerank" jdbcType="CHAR" property="issuerank" />
+    <result column="reverse1" jdbcType="VARCHAR" property="reverse1" />
+    <result column="reverse2" jdbcType="VARCHAR" property="reverse2" />
+    <result column="reverse3" jdbcType="VARCHAR" property="reverse3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    issueid, userid, issueclassify, issueheadline, issuedescribe, startdata, updata, 
+    state, issuerank, reverse1, reverse2, reverse3
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from data
+    where issueid = #{issueid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from data
+    where issueid = #{issueid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.reptile.code.entity.DataInfo">
+    insert into data (issueid, userid, issueclassify, 
+      issueheadline, issuedescribe, startdata, 
+      updata, state, issuerank, 
+      reverse1, reverse2, reverse3
+      )
+    values (#{issueid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{issueclassify,jdbcType=VARCHAR}, 
+      #{issueheadline,jdbcType=VARCHAR}, #{issuedescribe,jdbcType=VARCHAR}, #{startdata,jdbcType=TIMESTAMP}, 
+      #{updata,jdbcType=TIMESTAMP}, #{state,jdbcType=CHAR}, #{issuerank,jdbcType=CHAR}, 
+      #{reverse1,jdbcType=VARCHAR}, #{reverse2,jdbcType=VARCHAR}, #{reverse3,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.reptile.code.entity.DataInfo">
+    insert into data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="issueid != null">
+        issueid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="issueclassify != null">
+        issueclassify,
+      </if>
+      <if test="issueheadline != null">
+        issueheadline,
+      </if>
+      <if test="issuedescribe != null">
+        issuedescribe,
+      </if>
+      <if test="startdata != null">
+        startdata,
+      </if>
+      <if test="updata != null">
+        updata,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="issuerank != null">
+        issuerank,
+      </if>
+      <if test="reverse1 != null">
+        reverse1,
+      </if>
+      <if test="reverse2 != null">
+        reverse2,
+      </if>
+      <if test="reverse3 != null">
+        reverse3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="issueid != null">
+        #{issueid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="issueclassify != null">
+        #{issueclassify,jdbcType=VARCHAR},
+      </if>
+      <if test="issueheadline != null">
+        #{issueheadline,jdbcType=VARCHAR},
+      </if>
+      <if test="issuedescribe != null">
+        #{issuedescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="startdata != null">
+        #{startdata,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updata != null">
+        #{updata,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="issuerank != null">
+        #{issuerank,jdbcType=CHAR},
+      </if>
+      <if test="reverse1 != null">
+        #{reverse1,jdbcType=VARCHAR},
+      </if>
+      <if test="reverse2 != null">
+        #{reverse2,jdbcType=VARCHAR},
+      </if>
+      <if test="reverse3 != null">
+        #{reverse3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.reptile.code.entity.DataInfo">
+    update data
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="issueclassify != null">
+        issueclassify = #{issueclassify,jdbcType=VARCHAR},
+      </if>
+      <if test="issueheadline != null">
+        issueheadline = #{issueheadline,jdbcType=VARCHAR},
+      </if>
+      <if test="issuedescribe != null">
+        issuedescribe = #{issuedescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="startdata != null">
+        startdata = #{startdata,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updata != null">
+        updata = #{updata,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=CHAR},
+      </if>
+      <if test="issuerank != null">
+        issuerank = #{issuerank,jdbcType=CHAR},
+      </if>
+      <if test="reverse1 != null">
+        reverse1 = #{reverse1,jdbcType=VARCHAR},
+      </if>
+      <if test="reverse2 != null">
+        reverse2 = #{reverse2,jdbcType=VARCHAR},
+      </if>
+      <if test="reverse3 != null">
+        reverse3 = #{reverse3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where issueid = #{issueid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.reptile.code.entity.DataInfo">
+    update data
+    set userid = #{userid,jdbcType=VARCHAR},
+      issueclassify = #{issueclassify,jdbcType=VARCHAR},
+      issueheadline = #{issueheadline,jdbcType=VARCHAR},
+      issuedescribe = #{issuedescribe,jdbcType=VARCHAR},
+      startdata = #{startdata,jdbcType=TIMESTAMP},
+      updata = #{updata,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=CHAR},
+      issuerank = #{issuerank,jdbcType=CHAR},
+      reverse1 = #{reverse1,jdbcType=VARCHAR},
+      reverse2 = #{reverse2,jdbcType=VARCHAR},
+      reverse3 = #{reverse3,jdbcType=VARCHAR}
+    where issueid = #{issueid,jdbcType=VARCHAR}
+  </update>
+</mapper>

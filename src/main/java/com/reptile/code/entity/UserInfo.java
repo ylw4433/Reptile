@@ -1,9 +1,9 @@
-package com.reptile.code.dao.entity;
+package com.reptile.code.entity;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class User implements Serializable {
+public class UserInfo implements Serializable {
     private String userid;
 
     private String username;
@@ -145,13 +145,4 @@ public class User implements Serializable {
     public void setReverse3(String reverse3) {
         this.reverse3 = reverse3 == null ? null : reverse3.trim();
     }
-
-	@Override
-	public String toString() {
-		return "User [userid=" + userid + ", username=" + username + ", password=" + password + ", sex=" + sex
-				+ ", birthday=" + birthday + ", phone=" + phone + ", email=" + email + ", identitycard=" + identitycard
-				+ ", state=" + state + ", creatdata=" + creatdata + ", updata=" + updata + ", reverse1=" + reverse1
-				+ ", reverse2=" + reverse2 + ", reverse3=" + reverse3 + "]";
-	}
-    
 }
