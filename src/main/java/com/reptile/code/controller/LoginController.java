@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.reptile.code.dao.entity.User;
+import com.reptile.code.entity.UserInfo;
 import com.reptile.code.server.login.LoginServer;
 import com.reptile.code.server.login.LoginServerImpl;
 
@@ -29,11 +29,11 @@ public class LoginController {
 	
 	@RequestMapping("/login")
 	@ResponseBody
-	public String login(User user) {
+	public String login(UserInfo user) {
 		user.setUsername("lewei");
 		user.setPassword("123456");
-		User log_user = loginServer.login(user);
-		return log_user.getUsername().toString();
+		UserInfo log_UserInfo = loginServer.login(user);
+		return log_UserInfo.getUsername().toString();
 	}
 	
 	

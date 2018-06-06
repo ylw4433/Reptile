@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.reptile.code.dao.entity.User;
-import com.reptile.code.dao.entity.UserExample;
-import com.reptile.code.dao.mapper.UserMapper;
+
+import com.reptile.code.dao.UserInfoMapper;
+import com.reptile.code.entity.UserInfo;
 
 /***********************************************
 *
@@ -20,23 +20,20 @@ public class LoginServerImpl implements LoginServer{
 	
 
 	@Autowired
-	private UserMapper	usermapper;
+	private UserInfoMapper	usermapper;
 
-	public User login(User user) {
-		UserExample example = new UserExample();
-		example.createCriteria().andUsernameEqualTo(user.getUsername());
-		User result = null;
-		List<User> LoginUser = usermapper.selectByExample(example);
-		if (LoginUser.size() > 1) {
-			System.out.println("数据库异常！");
-		}else if(user.getPassword().equals(LoginUser.get(0).getPassword())){			
+	public UserInfo login(UserInfo user) {
+
+		UserInfo result = null;
+		UserInfo LoginUser = usermapper.selectByuser(user.getUsername(),user.getPassword());
+	    if( LoginUser != null){			
 			System.out.println("用戶名验证成功");
 			result = user;
 		}
 		return result;
 	}
 
-	public boolean logout(User user) {
+	public boolean logout(UserInfo user) {
 		// TODO Auto-generated method stub
 		return false;
 	}

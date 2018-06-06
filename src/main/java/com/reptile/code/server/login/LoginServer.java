@@ -2,7 +2,7 @@ package com.reptile.code.server.login;
 
 import java.util.List;
 
-import com.reptile.code.dao.entity.User;
+import com.reptile.code.entity.UserInfo;
 
 
 /***********************************************
@@ -15,8 +15,8 @@ import com.reptile.code.dao.entity.User;
 public interface LoginServer {
 	
 	//登录
-	User login(User user);
+	UserInfo login(UserInfo user);
 	//登出
-	boolean logout(User user);
+	boolean logout(UserInfo user);
 }
 
